@@ -1,0 +1,20 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ViewModel="clr-namespace:ViewModel;assembly=ViewModel"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Class="View.Components.SchemaCard"
+    x:DataType="ViewModel:SchemaViewModel"
+    >
+    <Border 
+        Padding="10" 
+        BorderThickness="1" 
+        BorderBrush="Black"
+        Background="LightGray"
+        >
+        <TextBlock Text="{Binding Schema.Name}"/>
+    </Border>
+</UserControl>
+
+

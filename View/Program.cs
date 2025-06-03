@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using System;
 
-namespace PR2_FinalProject;
+namespace View;
 
 class Program
 {
