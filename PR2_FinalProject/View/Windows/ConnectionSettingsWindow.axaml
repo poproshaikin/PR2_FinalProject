@@ -1,0 +1,27 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:viewModel="clr-namespace:PR2_FinalProject.ViewModel"
+        x:Class="PR2_FinalProject.View.Windows.ConnectionSettingsWindow"
+        x:DataType="viewModel:ConnectionSettingsWindowViewModel"
+        Height="150"
+        Width="400"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner"
+        Title="Connection Settings"
+>
+    <Border Background="#f8f9fa" Padding="20">
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" RowSpacing="10">
+            <TextBlock Grid.Row="0">
+                Enter connection string:
+            </TextBlock>
+            <TextBox Name="CnnStrInput"
+                     Grid.Row="1"
+                     Watermark="Host=localhost;Port=5432;Database=db;User=postgres;Password=qwerty"
+                     Text="{Binding ConnectionString}"/>
+            <Button Grid.Row="3" Command="{Binding ConnectAsync}">
+                Confirm
+            </Button>
+            <TextBlock Name="ErrorText" Foreground="Red" Grid.Row="4"/>
+        </Grid>
+    </Border>
+</Window>

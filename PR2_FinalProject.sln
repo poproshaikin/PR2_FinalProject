@@ -1,12 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "View\View.csproj", "{71B67A4C-CE5A-41FD-A119-CFC7212DF035}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModel", "ViewModel\ViewModel.csproj", "{746B9EF2-93B4-4C45-A3DE-34BC0C2A39A5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{A1DB6F13-56F0-4B4B-811D-BB9B4EC17A4C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{07CACB23-DD14-4119-959C-2D91BF49459E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PR2_FinalProject", "PR2_FinalProject\PR2_FinalProject.csproj", "{71B67A4C-CE5A-41FD-A119-CFC7212DF035}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,17 +12,5 @@ Global
 		{71B67A4C-CE5A-41FD-A119-CFC7212DF035}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71B67A4C-CE5A-41FD-A119-CFC7212DF035}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71B67A4C-CE5A-41FD-A119-CFC7212DF035}.Release|Any CPU.Build.0 = Release|Any CPU
-		{746B9EF2-93B4-4C45-A3DE-34BC0C2A39A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{746B9EF2-93B4-4C45-A3DE-34BC0C2A39A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{746B9EF2-93B4-4C45-A3DE-34BC0C2A39A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{746B9EF2-93B4-4C45-A3DE-34BC0C2A39A5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A1DB6F13-56F0-4B4B-811D-BB9B4EC17A4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A1DB6F13-56F0-4B4B-811D-BB9B4EC17A4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A1DB6F13-56F0-4B4B-811D-BB9B4EC17A4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A1DB6F13-56F0-4B4B-811D-BB9B4EC17A4C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{07CACB23-DD14-4119-959C-2D91BF49459E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{07CACB23-DD14-4119-959C-2D91BF49459E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{07CACB23-DD14-4119-959C-2D91BF49459E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{07CACB23-DD14-4119-959C-2D91BF49459E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
