@@ -12,16 +12,4 @@ public partial class MainWindow : Window
         DataContext = new MainViewModel(this);
         InitializeComponent();
     }
-    
-    private void OpenConnectionDialog(object sender, RoutedEventArgs e)
-    {
-        var vm = new ConnectionSettingsWindowViewModel();
-        var window = new ConnectionSettingsWindow()
-        {
-            DataContext = vm
-        };
-        vm.DialogCloser = window;
-
-        window.ShowDialog(this);
-    }
 }

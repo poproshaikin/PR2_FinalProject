@@ -24,7 +24,7 @@
             Grid.Column="0" 
             Background="White"
         >
-            <components:DbStructureTree></components:DbStructureTree>
+            <components:DbStructureTree DataContext="{Binding DbStructureTreeVm}"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1" Background="WhiteSmoke" >
             <TextBlock> World</TextBlock>

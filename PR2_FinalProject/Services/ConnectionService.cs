@@ -71,7 +71,7 @@ public class ConnectionService
                         table_schema AS SchemaName,
                         table_name AS TableName,
                         column_name AS ColumnName,
-                        data_type AS DataType,
+                        data_type AS DataType
                     FROM information_schema.columns
                     WHERE table_schema NOT IN ('pg_catalog', 'information_schema')
                     ORDER BY table_schema, table_name, ordinal_position;
@@ -81,6 +81,8 @@ public class ConnectionService
             CurrentConnection.Query<(string SchemaName, string TableName, string ColumnName, string DataType)>(query);
         
         var schemaDict = new Dictionary<string, SchemaViewModel>();
+        
+        Logger.Log($"Rows count: {result.Count()}");
 
         foreach (var row in result)
         {
@@ -97,7 +99,8 @@ public class ConnectionService
                 tableVm = new TableViewModel
                 {
                     Name = row.TableName,
-                    RowCount = CurrentConnection.ExecuteScalar<int>("SELECT COUNT(*) FROM @TableName", new { row.TableName })
+                    // TODO: avoid inserting a table and schema name directly to avoid SQL injection
+                    RowCount = CurrentConnection.ExecuteScalar<int>($"SELECT COUNT(*) FROM \"{row.SchemaName}\".\"{row.TableName}\"")
                 };
             }
         

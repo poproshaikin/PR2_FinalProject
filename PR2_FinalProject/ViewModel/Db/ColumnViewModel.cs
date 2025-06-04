@@ -8,4 +8,6 @@ public class ColumnViewModel
     public bool IsPrimaryKey { get; set; }
     public bool IsForeignKey { get; set; }
     public string? DefaultValue { get; set; }
+
+    public string DisplayName => $"c: {Name}";
 }

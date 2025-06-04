@@ -6,30 +6,54 @@
     x:Class="PR2_FinalProject.View.Components.DbStructureTree"
     x:DataType="viewModel:DbStructureTreeViewModel"
 >
-    <Grid>
-        <TextBlock
-            Text="Empty. You should add some schemas first"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            FontSize="14"
-        >
-            <TextBlock.IsVisible>
-                <Binding Path="NoSchemas"/>
-            </TextBlock.IsVisible>
-        </TextBlock>
+    <Border Padding="10">
+        <Grid>
+            <TextBlock Text="Empty... "
+                       VerticalAlignment="Center"
+                       FontSize="14">
+                <TextBlock.IsVisible>
+                    <Binding Path="NoSchemas" />
+                </TextBlock.IsVisible>
+            </TextBlock>
+            
+            <TreeView ItemsSource="{Binding Schemas}" 
+                      IsVisible="{Binding HasSchemas}"
+                      >
+                <TreeView.DataTemplates>
+                    <TreeDataTemplate DataType="db:SchemaViewModel" 
+                                      ItemsSource="{Binding Tables}">
+                        <TreeViewItem>
+                            <TextBlock Text="{Binding DisplayName}"
+                                       FontWeight="Bold" />
+                        </TreeViewItem>
+                    </TreeDataTemplate>
+                    <TreeDataTemplate DataType="db:TableViewModel" 
+                                      ItemsSource="{Binding Columns}">
+                        <TreeViewItem>
+                            <TextBlock Text="{Binding DisplayName}" />
+                        </TreeViewItem>
+                    </TreeDataTemplate>
+                        <DataTemplate DataType="db:ColumnViewModel">
+                            <TreeViewItem>
+                                <TextBlock Text="{Binding DisplayName}" />
+                            </TreeViewItem>
+                    </DataTemplate>
+                </TreeView.DataTemplates>
+            </TreeView>
 
-        <TreeView 
-            ItemsSource="{Binding Schemas}" 
-            IsVisible="{Binding HasSchemas}"
-        >
-            <TreeView.DataTemplates>
-                <TreeDataTemplate DataType="db:SchemaViewModel" ItemsSource="{Binding Tables}">
-                    <TextBlock Text="{Binding DisplayName}"/>
-                </TreeDataTemplate>
-                <TreeDataTemplate DataType="db:TableViewModel" ItemsSource="{Binding Columns}">
-                    <TextBlock Text="{Binding Name}"/>
-                </TreeDataTemplate>
-            </TreeView.DataTemplates>
-        </TreeView>
-    </Grid>
+            <!-- <TreeView ItemsSource="{Binding Schemas}" -->
+            <!--           IsVisible="{Binding HasSchemas}"> -->
+            <!--     <TreeView.DataTemplates> -->
+            <!--         <TreeDataTemplate DataType="db:SchemaViewModel"  -->
+            <!--                           ItemsSource="{Binding Tables}" -->
+            <!--                           > -->
+            <!--             <TextBlock Text="{Binding DisplayName}" /> -->
+            <!--         </TreeDataTemplate> -->
+            <!--         <TreeDataTemplate DataType="db:TableViewModel" ItemsSource="{Binding Columns}"> -->
+            <!--             <TextBlock Text="{Binding Name}" /> -->
+            <!--         </TreeDataTemplate> -->
+            <!--     </TreeView.DataTemplates> -->
+            <!-- </TreeView> -->
+        </Grid>
+    </Border>
 </UserControl>

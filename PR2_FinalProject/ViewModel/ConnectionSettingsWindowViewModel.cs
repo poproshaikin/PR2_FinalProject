@@ -16,10 +16,7 @@ public class ConnectionSettingsWindowViewModel
 {
     public string? ConnectionString { get; set; }
     public IDialogCloser? DialogCloser { get; set; }
-
-    public ConnectionSettingsWindowViewModel()
-    {
-    }
+    public event EventHandler? OnConnectionEstablished;
 
     public async Task ConnectAsync()
     {
@@ -35,10 +32,8 @@ public class ConnectionSettingsWindowViewModel
             if (!success)
                 return;
             
-            Logger.Log("Sending connection established message");
-            MessageBus.Current.SendMessage(new ConnectionEstablishedMessage());
-
             DialogCloser?.CloseDialog(true);
+            OnConnectionEstablished?.Invoke(this, EventArgs.Empty);
         }
         catch (Exception ex)
         {

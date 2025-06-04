@@ -24,6 +24,7 @@ public class SessionService
         if (!success) return false;
 
         _connectionService.CurrentConnection = connection;
+        _connectionService.ConnectionString = connectionString;
         return true;
     }
 }

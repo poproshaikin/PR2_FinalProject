@@ -10,24 +10,29 @@ namespace PR2_FinalProject.ViewModel;
 public class MainViewModel
 {
     private readonly Window _owner;
+    public DbStructureTreeViewModel DbStructureTreeVm { get; set; }
     
-    public ReactiveCommand<Unit, Unit> OpenConnectionDialogCommand { get; }
-
     public MainViewModel(Window owner)
     {
-        OpenConnectionDialogCommand = ReactiveCommand.CreateFromTask(OpenConnectionDialogAsync);
         _owner = owner;
+        DbStructureTreeVm = new DbStructureTreeViewModel();
     }
 
     public async Task OpenConnectionDialogAsync()
     {
         var vm = new ConnectionSettingsWindowViewModel();
+        vm.OnConnectionEstablished += (_, _) =>
+        {
+            DbStructureTreeVm.LoadSchemas();
+        };
+        
         var window = new ConnectionSettingsWindow()
         {
             DataContext = vm
         };
+        
         vm.DialogCloser = window;
 
-        await Dispatcher.UIThread.InvokeAsync(() => window.ShowDialog(_owner));
+        await window.ShowDialog(_owner);
     }
 }
