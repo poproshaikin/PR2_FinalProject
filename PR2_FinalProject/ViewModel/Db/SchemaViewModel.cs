@@ -15,7 +15,7 @@ public class SchemaViewModel : ReactiveObject
     
     public string Name { get; set; }
     public string Owner { get; set; }
-    public ObservableCollection<TableViewModel> Tables { get; set; } = [];
+    public ObservableCollection<DbTreeTableViewModel> Tables { get; set; } = [];
 
     public string DisplayName => $"s: {Name}";
     

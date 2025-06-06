@@ -58,14 +58,13 @@ public class ConnectionService
 
     public SchemaViewModel[] LoadSchemas()
     {
-        if (
-            !IsConnected || 
+        if (!IsConnected || 
             CurrentConnection is null || 
-            CurrentConnection.State != ConnectionState.Open
-        ) {
+            CurrentConnection.State != ConnectionState.Open) 
+        {
             throw new InvalidOperationException("Connection was not initialized");
         }
-        
+
         var query = """
                     SELECT 
                         table_schema AS SchemaName,
@@ -96,7 +95,7 @@ public class ConnectionService
             var tableVm = schemaVm.Tables.FirstOrDefault(t => t.Name == row.TableName);
             if (tableVm == null)
             {
-                tableVm = new TableViewModel
+                tableVm = new DbTreeTableViewModel
                 {
                     Name = row.TableName,
                     // TODO: avoid inserting a table and schema name directly to avoid SQL injection
@@ -104,11 +103,16 @@ public class ConnectionService
                 };
             }
         
-            tableVm.Columns.Add(new ColumnViewModel
+            tableVm.Columns.Add(new DbTreeColumnViewModel
             {
                 Name = row.ColumnName,
                 DataType = row.DataType,
             });
+
+            if (schemaVm.Tables.All(t => t.Name != row.TableName))
+            {
+                schemaVm.Tables.Add(tableVm);
+            }
         }
         
         return schemaDict.Values.ToArray();

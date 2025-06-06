@@ -1,6 +1,6 @@
 namespace PR2_FinalProject.ViewModel.Db;
 
-public class ColumnViewModel
+public class DbTreeColumnViewModel
 {
     public string Name { get; set; }
     public string DataType { get; set; }

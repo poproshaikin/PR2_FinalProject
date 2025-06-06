@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Data.Common;
 using PR2_FinalProject.Model;
 using Services;
@@ -11,6 +12,7 @@ public class SessionService
     public bool IsConnected => _connectionService.IsConnected;
     public DbConnection? Connection => _connectionService.CurrentConnection;
     public ConnectionService ConnectionService => _connectionService;
+    public TableCachingService Cache { get; set; } = new();
 
     public SessionService()
     {

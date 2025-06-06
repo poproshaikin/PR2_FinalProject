@@ -9,25 +9,38 @@
         x:DataType="viewModel:MainViewModel"
         Title="View">
     <Grid ColumnDefinitions="*,4*" RowDefinitions="*,30*">
-        <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Background="White">
+        <StackPanel Grid.Column="0" 
+                    Grid.ColumnSpan="2" 
+                    Grid.Row="0" 
+                    Background="White">
             <Button Command="{Binding OpenConnectionDialogAsync}">
                 Connection
-                <!-- <Image> -->
-                <!--     <Image.Source> -->
-                <!--         ~1~ <Svg:SvgImage Source="/View/Assets/database.svg"/> @1@ -->
-                <!--     </Image.Source> -->
-                <!-- </Image> -->
             </Button>
         </StackPanel>
-        <StackPanel 
-            Grid.Row="1" 
-            Grid.Column="0" 
-            Background="White"
-        >
+        <StackPanel Grid.Row="1"
+                    Grid.Column="0"
+                    Background="White">
             <components:DbStructureTree DataContext="{Binding DbStructureTreeVm}"/>
         </StackPanel>
-        <StackPanel Grid.Row="1" Grid.Column="1" Background="WhiteSmoke" >
-            <TextBlock> World</TextBlock>
+        <StackPanel Grid.Row="1" 
+                    Grid.Column="1" 
+                    Background="WhiteSmoke">
+            <ContentControl Content="{Binding CurrentControl}">
+                <ContentControl.DataTemplates>
+                    <DataTemplate DataType="viewModel:DashboardViewModel">
+                        <components:Dashboard />
+                    </DataTemplate>
+                    <DataTemplate DataType="viewModel:QueryConsoleViewModel">
+                        <components:QueryConsole />
+                    </DataTemplate>
+                    <DataTemplate DataType="viewModel:TableDescriptionViewModel">
+                        <components:TableDescription />
+                    </DataTemplate>
+                    <DataTemplate DataType="viewModel:ColumnDescriptionViewModel">
+                        <components:ColumnDescription />
+                    </DataTemplate>
+                </ContentControl.DataTemplates>
+            </ContentControl>
         </StackPanel>
     </Grid>
 </Window>

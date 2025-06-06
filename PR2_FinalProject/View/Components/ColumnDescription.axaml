@@ -1,0 +1,10 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:PR2_FinalProject.ViewModel"
+             x:DataType="vm:ColumnDescriptionViewModel"
+             x:Class="PR2_FinalProject.View.Components.ColumnDescription">
+    <StackPanel Margin="10">
+        <TextBlock Text="{Binding ColumnName}" FontWeight="Bold" FontSize="16"/>
+        <TextBlock Text="{Binding DataType}" Margin="0,10,0,0"/>
+    </StackPanel>
+</UserControl>

@@ -16,7 +16,8 @@ public class DbStructureTreeViewModel : ReactiveObject
     public ObservableCollection<SchemaViewModel> Schemas { get; set; }
     public bool HasSchemas => Schemas.Any();
     public bool NoSchemas => !HasSchemas;
-
+    public event Action<object>? OnItemSelected;
+    
     public DbStructureTreeViewModel()
     {
         Schemas = [];
@@ -25,6 +26,11 @@ public class DbStructureTreeViewModel : ReactiveObject
             Logger.Log("ConnectionEstablished");
             LoadSchemas();
         });
+    }
+
+    public void SelectItem(object item)
+    {
+        OnItemSelected?.Invoke(item);
     }
     
     public void LoadSchemas()
