@@ -1,14 +1,8 @@
-using System;
-using System.Reactive;
-using System.Threading.Tasks;
 using Avalonia;
-using Avalonia.Threading;
 using PR2_FinalProject.Model;
 using PR2_FinalProject.Services;
-using PR2_FinalProject.Services.Messages;
 using PR2_FinalProject.View;
 using PR2_FinalProject.View.Components;
-using ReactiveUI;
 
 namespace PR2_FinalProject.ViewModel;
 
@@ -37,7 +31,7 @@ public class ConnectionSettingsWindowViewModel
         }
         catch (Exception ex)
         {
-            Logger.Log(ex.Message);
+            Logger.LogAsync(ex.Message);
         }
     }
 }

@@ -45,6 +45,6 @@ public class QueryConsoleViewModel : ReactiveObject
 
     private void RunQuery()
     {
-        Logger.Log($"Starting executing query: {Query}");
+        Logger.LogAsync($"Starting executing query: {Query}");
     }
 }

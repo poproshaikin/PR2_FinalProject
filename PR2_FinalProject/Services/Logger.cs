@@ -1,20 +1,30 @@
-
-using System;
+using System.IO;
 
 namespace PR2_FinalProject.Services;
 
 public static class Logger
 {
-    private static string _currentSessionLogFileName;
+    private static readonly string logFilePath;
     
     static Logger()
     {
-        // TODO create a session file 
+        if (!Directory.Exists("logs"))
+            Directory.CreateDirectory("logs");
+        
+        logFilePath = Path.Combine(Directory.GetCurrentDirectory(), "logs",
+            DateTime.Now.ToString("yyyy-MM-dd") + ".txt");
     }
     
-    public static void Log(string message)
+    public static async void LogAsync(string message)
     {
-        Console.WriteLine(message);
-        // TODO write message into session file 
+        try
+        {
+            Console.WriteLine(message);
+            await File.AppendAllTextAsync(logFilePath, message + Environment.NewLine);
+        }
+        catch
+        {
+            // ignore (wtf)
+        }
     }
 }

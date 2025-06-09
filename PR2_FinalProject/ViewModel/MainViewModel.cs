@@ -1,7 +1,9 @@
 using System.Reactive;
 using System.Threading.Tasks;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Threading;
+using PR2_FinalProject.View;
 using PR2_FinalProject.View.Components;
 using PR2_FinalProject.View.Windows;
 using PR2_FinalProject.ViewModel.Db;
@@ -43,9 +45,14 @@ public class MainViewModel : ReactiveObject
         
     private void HandleItemSelected(object selectedItem)
     {
+        var app = (App)Application.Current!;
+        var session = app.Session;
+        
         if (selectedItem is DbTreeTableViewModel tableVm)
         {
-            var tableDescriptionVm = new TableDescriptionViewModel(tableVm);
+            TableViewModel bindTableData = session.ConnectionService.LoadTable(tableVm.Schema, tableVm.Name, true);
+            
+            var tableDescriptionVm = new TableDescriptionViewModel(tableVm, bindTableData);
             CurrentControl = new TableDescription
             {
                 DataContext = tableDescriptionVm
@@ -61,7 +68,7 @@ public class MainViewModel : ReactiveObject
         }
         else
         {
-            CurrentControl = null; // или какой-то дефолт
+            CurrentControl = null!;
         }
         
         this.RaisePropertyChanged(nameof(CurrentControl));

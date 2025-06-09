@@ -1,10 +1,12 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="clr-namespace:PR2_FinalProject.ViewModel"
+             xmlns:components="clr-namespace:PR2_FinalProject.View.Components"
              x:DataType="vm:TableDescriptionViewModel"
              x:Class="PR2_FinalProject.View.Components.TableDescription">
     <StackPanel Margin="10">
         <TextBlock Text="{Binding TableName}" FontWeight="Bold" FontSize="18"/>
         <TextBlock Text="{Binding Description}" Margin="0,10,0,0"/>
+        <components:TableView DataContext="{Binding BindTable}"/>
     </StackPanel>
 </UserControl>

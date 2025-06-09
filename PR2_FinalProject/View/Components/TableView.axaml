@@ -1,41 +1,15 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="clr-namespace:PR2_FinalProject.ViewModel"
+             xmlns:misc="clr-namespace:PR2_FinalProject.Misc"
              x:Class="PR2_FinalProject.View.Components.TableView"
-             x:DataType="vm:DataTableViewModel">
-    <ScrollViewer HorizontalScrollBarVisibility="Auto">
-        <StackPanel>
-            <ItemsControl ItemsSource="{Binding Columns}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding}" Margin="5" FontWeight="Bold"/>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-
-            <ItemsControl ItemsSource="{Binding Rows}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <ItemsControl ItemsSource="{Binding Cells}">
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel Orientation="Horizontal"/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Value}" Margin="5"/>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </StackPanel>
-    </ScrollViewer>
+             x:DataType="vm:TableViewModel"
+             xmlns:mxdg="https://schemas.eremexcontrols.net/avalonia/datagrid" 
+             >
+    <StackPanel>
+        <DataGrid Name="MainGrid"
+                  ItemsSource="{Binding Table}" 
+                  CanUserResizeColumns="True">
+        </DataGrid>
+    </StackPanel>
 </UserControl>
